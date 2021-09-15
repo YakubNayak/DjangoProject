@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+<link rel="stylesheet" href="{% static '/css/mystyle.css'%}">
+    <script src="{% static '/js/myjs.js'%}"></script>
+</head>
+<body>
+<body background="{% static '/images/nature.jpg' %}">
+
+<h1>Welcome to My Home page</h1>
+<p>This web application for django developers</p>
+<form>
+<input type="button" value="click" onclick="msg()"/>
+</form>
+<a href="{% url 'Aboutl' %}">Visit About Page</a> <p></p>
+<a href="{% url 'Contactl' %}">Visit Contact Page</a> <p></p>
+<a href="{% url 'Donatel' %}">Donate</a> <p></p>
+<img src="{% static '/images/new.jpg' %}">
+</body>
+</html>

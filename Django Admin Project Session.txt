@@ -1,0 +1,134 @@
+Python Admin Application( Default)
+---------------------------------
+1: create project
+
+2: create application
+
+D:\Nexsoft>django-admin startproject MyadminProject
+
+D:\Nexsoft>cd MyadminProject
+
+D:\Nexsoft\MyadminProject>python manage.py startapp myadminapp
+
+3: configure application
+
+a) configure application in settings.py file
+b) confugure data base also
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'myadmindb',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
+Django provides an admin site to allow CRUD (Create Read Update Delete) operations on 
+registered app model.
+
+It is a built-in feature of Django that automatically generates interface for models.
+
+We can see the url entry for admin in urls.py file, it is implicit 
+and generated while creating a new project.
+
+urls.py
+-----
+
+urlpatterns = [  
+    path('admin/', admin.site.urls),  
+]  
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+It can be easily accessed by after login from the admin panel, lets run the server 
+python3 manage.py runserver and access it through the 
+
+localhost:8000/admin.
+
+
+
+step7: makemigrations for admin user
+step8: migrate
+
+
+python manage.py makemigration
+python manage.py migrate
+
+
+
+
+Here Admin Home page will display
+---------------------------------
+Here Login with User name and password:
+-----------------------------------------
+
+
+D:\Nexsoft\curdproject>python manage.py createsuperuser
+Username: yakubnaik
+Email address: yakubnaik@gmail.com
+Password:
+Password (again):
+The password is too similar to the username.
+This password is too short. It must contain at least 8 characters.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+
+D:\Nexsoft\curdproject>python manage.py runserver
+
+
+ http://127.0.0.1:8000/
+
+------------------------
+ http://127.0.0.1:8000/admin
+
+
+
+If we add new user on addmin
+create model.py 
+-------------
+
+from django.db import models
+class Employee(models.Model):
+    eid     = models.CharField(max_length=20)
+    ename   = models.CharField(max_length=100)
+    econtact = models.CharField(max_length=15)
+    class Meta:
+        db_table = "employee"
+
+class Student(models.Model):
+    sid     = models.CharField(max_length=20)
+    sname   = models.CharField(max_length=100)
+    scontact = models.CharField(max_length=15)
+    saddress = models.CharField(max_length=15)
+    class Meta:
+        db_table = "Student"
+
+
+
+++++++++++++++++++++++++++++++++++++++++
+
+Activate New Models.py file in admin.py file
+--------------------------------------------
+
+from django.contrib import admin
+from curdapp.models import Employee
+admin.site.register(Employee) # Employee is registered
+
+
+
+from django.contrib import admin
+from curdapp.models import Employee
+from curdapp.models import Student
+admin.site.register(Employee) # Employee is registered
+admin.site.register(Student)
+
+
+
+
+
+	

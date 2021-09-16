@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/mystyle.css'%}">
+<script src="{% static '/js/myscript.js'%}"></script>
+</head>
+<body>
+<body background="{% static '/images/new.jpg' %}">
+<h1>Welcome to Django Static File Application</h1>
+<p>Overrides the core runserver command if the staticfiles app is installed and adds automatic
+    serving of static files. File serving doesn’t run through MIDDLEWARE.</p>
+<img src="{% static 'images/sun.jpg' %}" alt="praba" width="200" height="300">
+<img src="{% static 'images/taj.jpg' %}" alt="praba" width="200" height="300">
+<input type="submit" value="ClickMe" onclick="msg()">
+<input type="submit" value="sms" onclick="sms()">
+</body>
+</html>
